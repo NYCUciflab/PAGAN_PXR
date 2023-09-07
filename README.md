@@ -5,5 +5,5 @@ The generator of PAGAN is a special generator which takes both patch images and 
 This generator would produce two outputs which are a binary label and a synthetic image. 
 
 <p align="center">
-  ![figure/PXR_heatmap.png](https://github.com/NYCUciflab/PAGAN_PXR/blob/main/heatmap/PXR_heatmap.png)
+  <img src="https://github.com/NYCUciflab/PAGAN_PXR/blob/main/heatmap/PXR_heatmap.png" />
 </p>
