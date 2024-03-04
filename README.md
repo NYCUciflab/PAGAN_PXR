@@ -8,11 +8,11 @@ Hip fractures represent a significant public health concern, especially for the 
 
 
 
-# Framework
+<!-- # Framework
 
 <p align="center">
   <img src="https://github.com/NYCUciflab/PAGAN_PXR/blob/main/figure/framework.png" />
-</p>
+</p> -->
 
 
 
