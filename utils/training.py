@@ -18,7 +18,6 @@ class train_by_epoch:
                  batchs,
                  train_dataset,
                  valid_dataset,
-                 test_dataset,
                  crop_dataset, 
                  device,
                  result_dir,
@@ -69,7 +68,6 @@ class train_by_epoch:
         # for classifier
         self.train_dataset = train_dataset
         self.valid_dataset = valid_dataset
-        self.test_dataset  = test_dataset
         self.classifier_learning_rate = classifier_learning_rate
         self.classifier_loss = classifier_loss
         self.train_step = len(self.train_dataset)
@@ -247,14 +245,16 @@ class train_by_epoch:
             self.G.eval()
             self.D.eval()
             valid_losses = []
+            labels       = []
+            preds        = []
             for i_batch, sample_batched in enumerate(self.valid_dataset):
 
                 imgs   = sample_batched['image'].to(self.device)
                 labels = sample_batched['label'].to(self.device)
 
                 self.G_optim.zero_grad()
-                preds, _ = self.G(imgs)
-                loss = self.classifier_loss(preds, labels)
+                pred, _ = self.G(imgs)
+                loss = self.classifier_loss(pred, labels)
 
                 # append losses
                 valid_loss = loss.tolist()
@@ -262,37 +262,18 @@ class train_by_epoch:
 
                 # calculate average losses
                 avg_valid_loss = np.mean(valid_losses)
+
+                labels.append(label.tolist()[0])
+                preds.append(pred.tolist()[0][0])
                 
                 if self.testing_code:
                     if i_batch+1 == 5:
                         break
                         
+
+                
+            avg_valid_loss = np.mean(valid_losses)
             avg_valid_losses.append(avg_valid_loss)
-
-            print(f'ValidLoss:%.4f'%(avg_valid_loss), end='   ')
-
-
-            # testing
-            test_losses = []
-            labels = []
-            preds  = []
-
-            for i_batch, sample_batched in enumerate(self.test_dataset):
-                img   = sample_batched['image'].to(self.device)
-                label = sample_batched['label'].to(self.device)
-                pred, _ = self.G(img)
-                loss   = self.classifier_loss(pred, label)
-                
-                test_losses.append(loss.tolist())
-                labels.append(label.tolist()[0])
-                preds.append(pred.tolist()[0][0])
-                
-                if self.testing_code:
-                    if i_batch == 5:
-                        break
-                
-            test_loss = np.mean(test_losses)
-            avg_test_losses.append(test_loss)
 
             acc, sen, spc, ydn = get_results(preds, labels, threshold=0.5)
             print(f'acc: %.4f   sen: %.4f   spc:%.4f   ydn:%.4f'%(acc, sen, spc, ydn))

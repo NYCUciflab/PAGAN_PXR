@@ -27,7 +27,30 @@ Hip fractures represent a significant public health concern, especially for the 
 
 # Usage
 
-1. 
+#### 1. Data Folder Structure: Before training, we need to arrange the image folders in the below Configuration.
 ```
+Dataset.
+       |- Train.
+               |- fracture
+               |- non-fracture
+
+        - Valid.
+               |- fracture
+               |- non-fracture
+ 
+        - Test.
+              |- fracture
+              |- non-fracture
+
+        - Crop_data
 
 ```
+
+#### 2. Install the requirements
+```
+pip install -r requirements.txt
+```
+
+#### 3. Modify the folder path and hyperparameters in "config.py"
+
+In "config.py"
