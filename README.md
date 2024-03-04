@@ -53,4 +53,35 @@ pip install -r requirements.txt
 
 #### 3. Modify the folder path and hyperparameters in "config.py"
 
-In "config.py"
+The parameters are listed in file "config.py", you can modify the hyperparameters and the image folder here.
+
+```
+i.g.
+
+##### INFORMATION #####
+testing_code     = False
+annotaton        = 'test_1'
+device           = 'cuda:0'
+model_name       = 'efficientnet_b0'
+epochs           = 100
+learning_rate    = 0.0001
+batch_size       = 8
+image_size       = 512
+
+# image folder
+train_dir   = 'ENTER YOUR TRAINING FORDER PATH'
+valid_dir   = 'ENTER YOUR VALIDATION FORDER PATH'
+test_dir    = 'ENTER YOUR TEST FORDER PATH'
+crop_folder = 'ENTER YOUR CROP FOLDER PATH'
+
+```
+
+#### 4. Training and testing
+
+Run the training process
+```
+python train.py
+```
+
+#### 5. Testing
+In "visualization.ipynb", you can calculate and visualize the testing performance.

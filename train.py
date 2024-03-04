@@ -6,6 +6,7 @@ import numpy as np
 from shutil import copyfile
 
 from config import *
+from setting import *
 from utils.dataset import build_dataset, build_CropDataset
 from utils.model import Discriminator, PAGenerator
 from utils.training import train_by_epoch
