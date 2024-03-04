@@ -1,9 +1,5 @@
 # Patch auxiliary generative adversarial network (PAGAN)
 
-<p align="center">
-  <img src="https://github.com/NYCUciflab/PAGAN_PXR/blob/main/figure/PXR_heatmap.png" />
-</p>
-
 
 ---
 # Abstract
@@ -19,3 +15,19 @@ Hip fractures represent a significant public health concern, especially for the 
 </p>
 
 
+
+# GradCAM for visualization
+
+<p align="center">
+  <img src="https://github.com/NYCUciflab/PAGAN_PXR/blob/main/figure/PXR_heatmap.png" />
+</p>
+
+
+
+
+# Usage
+
+1. 
+```
+
+```
